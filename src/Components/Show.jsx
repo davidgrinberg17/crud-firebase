@@ -25,7 +25,7 @@ export const Show = () => {
     const deletePlayer = async (id) => {
         const playerDoc = doc(db, "players", id)
         await deleteDoc (playerDoc)
-        // getPlayers()
+        getPlayers()
     }
     //5 funcion para la confirmacion
     const confirmDelete= (id) => {
@@ -62,6 +62,31 @@ export const Show = () => {
                     <div className="d-grip gap-2">
                         <Link to="/create" className="btn btn-secondary mt-2">CREAR</Link>
                     </div>
+                    <table className="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Apellido</th>
+                                <th>Nombre</th>
+                                <th>Numero</th>
+                                <th>Posicion</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {players.map((player) => (
+                                <tr key={player.id}>
+                                    <td>{player.name}</td>
+                                    <td>{player.lastName}</td>
+                                    <td>{player.number}</td>
+                                    <td>{player.position}</td>
+                                    <td>
+                                        <Link to={`/edit/${player.id}`} className="btn btn-light">EDITAR</Link>
+                                        <button onClick={() => {confirmDelete(player.id)}} className="btn btn-danger">eliminar</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
