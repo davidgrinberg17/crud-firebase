@@ -56,6 +56,14 @@ export const Show = () => {
 
     //7 devolemos la vista
     return(
-        <div></div>
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <div className="d-grip gap-2">
+                        <Link to="/create" className="btn btn-secondary mt-2">CREAR</Link>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
